@@ -22,6 +22,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+<<<<<<< HEAD
     App\Controller\UserController:
         arguments:
             - '@App\Repository\UserRepository'
@@ -31,3 +32,5 @@ services:
 
     App\Entity\User:
         public: true
+=======
+>>>>>>> 1c9a9f6c8144cbefa494634fe01ed82ceb9b1436

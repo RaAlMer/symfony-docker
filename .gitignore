@@ -8,3 +8,7 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+<<<<<<< HEAD
+=======
+/.docker/.env.nginx.local
+>>>>>>> 1c9a9f6c8144cbefa494634fe01ed82ceb9b1436
