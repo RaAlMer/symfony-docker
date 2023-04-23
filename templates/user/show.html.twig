@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Details{% endblock %}
+
+{% block body %}
+  <h1>User Details</h1>
+
+  <dl>
+    <dt>Name:</dt>
+    <dd>{{ user.name }}</dd>
+    <dt>Surname:</dt>
+    <dd>{{ user.surname }}</dd>
+    <dt>Location:</dt>
+    <dd>{{ user.location }}</dd>
+    <dt>Category:</dt>
+    <dd>{{ user.category }}</dd>
+    <dt>Age:</dt>
+    <dd>{{ user.age }}</dd>
+    <dt>Status:</dt>
+    <dd>{{ user.isActive ? 'Active' : 'Inactive' }}</dd>
+    <dt>Created At:</dt>
+    <dd>{{ user.createdAt|date('Y-m-d H:i:s') }}</dd>
+    <dt>Updated At:</dt>
+    <dd>{{ user.updatedAt|date('Y-m-d H:i:s') }}</dd>
+  </dl>
+
+  <form action="{{ path('user_delete', {'id': user.id}) }}" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+        <button type="submit">Delete User</button>
+  </form>
+
+  <a href="{{ path('user_index') }}">Back to the list</a>
+{% endblock %}

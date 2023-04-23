@@ -1,0 +1,81 @@
+{# templates/user/search.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Search Users{% endblock %}
+
+{% block body %}
+    <h1>Search Users</h1>
+
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.filters.name, 'Name') }}
+            {{ form_widget(form.filters.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.filters.age, 'Age') }}
+            {{ form_widget(form.filters.age, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.filters.location, 'Location') }}
+            {{ form_widget(form.filters.location, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.filters.category, 'Category') }}
+            {{ form_widget(form.filters.category, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.filters.isActive, 'Active') }}
+            {{ form_widget(form.filters.isActive, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.filters.createdAt, 'Created At') }}
+            {{ form_widget(form.filters.createdAt, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.filters.updatedAt, 'Updated At') }}
+            {{ form_widget(form.filters.updatedAt, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+    {{ form_end(form) }}
+
+    <hr>
+
+    {% if users|length > 0 %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                    <th>Category</th>
+                    <th>Active</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.name }} {{ user.surname }}</td>
+                        <td>{{ user.age }}</td>
+                        <td>{{ user.location }}</td>
+                        <td>{{ user.category }}</td>
+                        <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
+                        <td>{{ user.createdAt|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ user.updatedAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No users found.</p>
+    {% endif %}
+{% endblock %}
